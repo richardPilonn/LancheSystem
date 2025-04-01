@@ -11,20 +11,22 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('produtos', function (Blueprint $table) {
+        Schema::create('funcionarios', function (Blueprint $table) {
             $table->id();
-            $table->string('nome', 150)->nullable(false);
-            $table->string('ingredientes', 255)->nullable(false);
-            $table->decimal('valor', 15,2)->nullable(false);
+            $table->string('nome', 100)->nullable(false);
+            $table->string('cpf', 15)->nullable(false)->unique(true);
+            $table->string('email', 150)->nullable(false)->unique(true);
+            $table->string('password', 255)->nullable(false);
             $table->timestamps();
         });
     }
+
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('produtos');
+        Schema::dropIfExists('funcionarios');
     }
 };
