@@ -11,24 +11,23 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('funcionarios', function (Blueprint $table) {
+        Schema::create('admins', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id')->unsigned()->nullable(false); 
-            $table->string('nome', 100)->nullable(false);
-            $table->string('cpf', 15)->nullable(false)->unique(true);
-            $table->string('email', 150)->nullable(false)->unique(true);
-            $table->string('password', 255)->nullable(false);
+            $table->string('nome', 80)->nullable(false);
+            $table->string('cpf', 11)->nullable(false)->unique();
+            $table->string('email', 150)->nullable(false)->unique();
+            $table->string('password')->nullable(false);
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
-
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('funcionarios');
+        Schema::dropIfExists('admins');
     }
 };

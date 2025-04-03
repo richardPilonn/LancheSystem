@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('cpf', 15)->nullable(false)->unique(true);
             $table->string('email', 80)->nullable(false);
             $table->string('password', 255)->nullable(false);
+            $table->enum('user_type', ['admin', 'funcionario'])->default('funcionario');
             $table->timestamps();
         });
     }
